@@ -1,3 +1,4 @@
+//const idb = require('js/idb.js')
 let transactions = [];
 let myChart;
 
@@ -8,7 +9,7 @@ fetch("/api/transaction")
   .then(data => {
     // save db data on global variable
     transactions = data;
-
+    transactions += 
     populateTotal();
     populateTable();
     populateChart();
@@ -125,6 +126,8 @@ function sendTransaction(isAdding) {
     return response.json();
   })
   .then(data => {
+    console.log("Save Record Localy")
+    saveRecord(formData);
     if (data.errors) {
       errorEl.textContent = "Missing Information";
     }
